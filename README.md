@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextASP Boilerplate
 
-## Getting Started
+A modern, type-safe full-stack boilerplate featuring **Next.js** for the frontend and **ASP.NET Core** for the backend, integrated in a **pnpm monorepo**.
 
-First, run the development server:
+## 🚀 Key Features
+
+- **Monorepo Architecture**: Managed with `pnpm` and `Turborepo` for efficient local development and builds.
+- **ASP.NET Core Backend**: Robust, high-performance API with built-in Swagger/OpenAPI documentation.
+- **Next.js Frontend**: Modern App Router, React 19, and Ant Design for rapid UI development.
+- **Type-safe SDK**: Automatically generated API client using `Orval`, ensuring frontend-backend type synchronization.
+- **Responsive Design**: Pre-configured with `antd` and `antd-style`.
+
+## 📂 Project Structure
+
+- `apps/backend`: ASP.NET Core Web API.
+- `apps/web`: Next.js web application.
+- `packages/sdk`: Generated API client and shared utilities.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v20+)
+- [pnpm](https://pnpm.io/) (v9+)
+- [.NET SDK](https://dotnet.microsoft.com/download) (v9.0+)
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run both the backend and frontend simultaneously:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev
+```
 
-## Learn More
+- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Backend API**: [http://localhost:5000](http://localhost:5000)
+- **Swagger UI**: [http://localhost:5000/swagger](http://localhost:5000/swagger)
 
-To learn more about Next.js, take a look at the following resources:
+### 🔄 Synchronizing the SDK
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+When you make changes to the backend API controllers or models, you need to update the frontend SDK.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Ensure the backend is running (to serve `swagger.json`).
+2. Run the generation script:
 
-## Deploy on Vercel
+```bash
+pnpm sdk:generate
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This command uses `Orval` to read the Swagger definition and regenerate the TypeScript client in `packages/sdk/generated`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧪 Testing
+
+```bash
+# Frontend
+pnpm --filter web lint
+```
+
+## 📜 License
+
+ISC

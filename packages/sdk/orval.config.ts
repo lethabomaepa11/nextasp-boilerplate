@@ -9,7 +9,7 @@ export default defineConfig({
       override: {
         mutator: {
           path: "./utils/axios.ts",
-          name: "axiosInstance"
+          name: "axiosInstance",
         }
       }
     }
