@@ -58,7 +58,7 @@ const Home = () => {
           <Button type="primary" size="large" icon={<RocketOutlined />} ghost className={styles.heroCta} onClick={() => window.scrollTo({ top: 800, behavior: 'smooth' })}>
             Get Started
           </Button>
-          <Button size="large" icon={<GithubOutlined />} href="https://github.com/lethabo-shai/nextasp-boilerplate" target="_blank">
+          <Button size="large" icon={<GithubOutlined />} href="https://github.com/lethabomaepa11/nextasp-boilerplate" target="_blank">
             View Source
           </Button>
         </Space>
