@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently -n BACKEND,WEB -c blue,green \"pnpm dev:backend\" \"pnpm dev:web\"",
+    "dev:backend": "dotnet watch run --project apps/backend",
+    "dev:web": "pnpm --filter web dev",
+    "migrate": "dotnet ef database update --project apps/backend"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +15,7 @@
   "packageManager": "pnpm@10.33.2",
   "devDependencies": {
     "turbo": "^2.9.14",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "concurrently": "^9.0.0"
   }
 }
